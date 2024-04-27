@@ -44,7 +44,7 @@ function Product() {
             </div>
           </div>
         ))}
-      <ToastContainer />
+      <ToastContainer stacked />
     </div>
   );
 }

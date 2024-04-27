@@ -14,7 +14,9 @@ const cartSlice = createSlice({
         return data.id === item.id;
       });
       if (existingItem) {
-        toast.error("Already exist in cart!");
+        toast.error("Already exist in cart!", {
+          theme: "dark",
+        });
       } else {
         state.items.push(item);
       }
