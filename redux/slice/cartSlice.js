@@ -1,4 +1,4 @@
-import data from "@/components/sharedData/data";
+import { ToastContainer, toast } from "react-toastify";
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   items: [],
@@ -14,7 +14,7 @@ const cartSlice = createSlice({
         return data.id === item.id;
       });
       if (existingItem) {
-        alert("Already exist");
+        toast.error("Already exist in cart!");
       } else {
         state.items.push(item);
       }

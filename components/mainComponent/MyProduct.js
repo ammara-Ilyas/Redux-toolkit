@@ -2,14 +2,14 @@
 import React from "react";
 import Image from "next/image";
 import data from "../sharedData/data";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slice/cartSlice";
 function Product() {
   const dispatch = useDispatch();
   const handlerAddtoCart = (proItem) => {
-    console.log(proItem);
     dispatch(addToCart(proItem));
-    console.log("ok");
   };
   return (
     <div className="grid grid-cols-12 gap-4	border-red-200 justify-center max-w-7xl mx-auto place-content-center">
@@ -44,6 +44,7 @@ function Product() {
             </div>
           </div>
         ))}
+      <ToastContainer />
     </div>
   );
 }
