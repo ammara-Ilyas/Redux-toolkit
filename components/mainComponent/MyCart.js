@@ -73,7 +73,7 @@ function Cart() {
           </div>
           <div className="mt-8 flex justify-end flex-col">
             <p className="text-center font-bold text-2xl mb-3">
-              Total Price : {Math.round(totalPrice)}
+              Total Price : ${Math.round(totalPrice)}
             </p>
             <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">
               Checkout
