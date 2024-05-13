@@ -18,7 +18,14 @@ const cartSlice = createSlice({
           theme: "dark",
         });
       } else {
-        state.items.push(item);
+        const defaultQuantity = 1;
+        const { price } = item;
+        const totalPrice = defaultQuantity * price;
+        state.items.push({
+          ...item,
+          quantity: defaultQuantity,
+          totalPrice: totalPrice,
+        });
       }
     },
     removefromCart(state, action) {

@@ -10,12 +10,12 @@ import {
 function Cart() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
+  console.log("cart", cartItems);
 
-  const totalPrice = cartItems.reduce(
-    (acc, priceItem) => acc + priceItem.totalPrice,
-    0
-  );
-  //   console.log("price", totalPrice);
+  const totalPriceAllProducts = cartItems.reduce((acc, priceItem) => {
+    return acc + priceItem.totalPrice;
+  }, 0);
+  console.log("item", totalPriceAllProducts);
   const deleteItem = (index) => {
     dispatch(removefromCart(index));
   };
@@ -73,7 +73,7 @@ function Cart() {
           </div>
           <div className="mt-8 flex justify-end flex-col">
             <p className="text-center font-bold text-2xl mb-3">
-              Total Price : ${Math.round(totalPrice)}
+              Total Price : ${Math.round(totalPriceAllProducts)}
             </p>
             <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">
               Checkout

@@ -28,14 +28,18 @@ function Product() {
     dispatch(addToCart(proItem));
   };
   return (
-    <div className="grid grid-cols-12  gap-4	border-red-200 justify-center mt-28 mx-auto place-content-center">
+    <div className="flex flex-wrap items-center justify-center gap-4 w-[90%]	border-red-200  mt-28 mx-auto">
       {data &&
         data.map((item, i) => (
           <div
-            className="card w-96 border-2 bg-base-100 shadow-xl col-span-4 p-4 transition"
+            className="card w-[30%]  border-2 h-[500px] shadow-xl p-4 transition"
             key={i}
           >
-            <img src={item.image} alt="pro" className="w-full h-[250px]" />
+            <img
+              src={item.image}
+              alt="pro"
+              className="w-3/4 mx-auto h-[250px]"
+            />
             <div className="card-body">
               <h2 className="card-title">{item.title}</h2>
               <p className="p-2">
