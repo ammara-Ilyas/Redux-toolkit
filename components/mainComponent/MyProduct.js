@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import data from "../sharedData/data";
 import { ToastContainer } from "react-toastify";
@@ -7,7 +7,23 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slice/cartSlice";
 function Product() {
+  const [data, setData] = useState([]);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    try {
+      const fetchData = async () => {
+        const res = await fetch("https://fakestoreapi.com/products");
+        const data = await res.json();
+        console.log(data);
+        console.log(data[0].img);
+        setData(data);
+      };
+      fetchData();
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
   const handlerAddtoCart = (proItem) => {
     dispatch(addToCart(proItem));
   };
