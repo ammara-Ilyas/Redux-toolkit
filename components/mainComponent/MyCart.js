@@ -13,7 +13,8 @@ function Cart() {
   console.log("cart", cartItems);
 
   const totalPriceAllProducts = cartItems.reduce((acc, priceItem) => {
-    return acc + priceItem.totalPrice;
+    console.log("acc", acc, "price", priceItem);
+    return acc + priceItem.quantity * priceItem.price;
   }, 0);
   console.log("item", totalPriceAllProducts);
   const deleteItem = (index) => {
@@ -27,7 +28,7 @@ function Cart() {
     dispatch(decreCartItems(index));
   };
   return (
-    <div className=" w-3/4 mx-auto mt-8 bg-base-100 shadow-xl  p-4 transition flex overflow-hidden ">
+    <div className="w-[95%] md:w-3/4 mx-auto mt-8 bg-base-100 shadow-xl  p-24 transition flex overflow-hidden ">
       {cartItems.length === 0 ? (
         <div className="text-gray-600 min-h-24 flex text-center text-2xl pt-11 font-bold justify-center items-center">
           <h2>Your cart is empty.</h2>
@@ -36,17 +37,17 @@ function Cart() {
         <div className="w-full">
           <h1 className="text-3xl font-bold mb-4 text-center">Your Cart</h1>
 
-          <div className="border-2 overflow-y-scroll h-80">
+          <div className="border-2 h-80 overflow-y-scroll scroll-m-28">
             {cartItems.map((product, index) => (
               <div
                 key={index}
-                className="flex items-center   justify-between border-b border-gray-300 py-4"
+                className="flex items-center flex-col md:flex-row   justify-between border-b border-gray-300 py-4"
               >
                 <div className="flex items-center space-x-4">
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="h-16 w-16 object-cover rounded"
+                    className="h-28 w-28 md:h-16 md:w-16 object-cover rounded"
                   />
                   <div>
                     <h2 className="text-lg font-bold">{product.title}</h2>

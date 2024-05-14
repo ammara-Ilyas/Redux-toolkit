@@ -1,4 +1,4 @@
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   items: [],
@@ -19,12 +19,9 @@ const cartSlice = createSlice({
         });
       } else {
         const defaultQuantity = 1;
-        const { price } = item;
-        const totalPrice = defaultQuantity * price;
         state.items.push({
           ...item,
           quantity: defaultQuantity,
-          totalPrice: totalPrice,
         });
       }
     },
