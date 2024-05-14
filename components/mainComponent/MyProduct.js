@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
-import Link from "next/link";
 import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slice/cartSlice";
 function Product() {
@@ -26,7 +26,9 @@ function Product() {
   };
   return (
     <div className="flex flex-wrap items-center justify-center gap-4 w-[90%]	border-red-200  mt-28 mx-auto">
-      {data &&
+      {!data ? (
+        <div className="text-center text-2xl">Loading...</div>
+      ) : (
         data.map((item, i) => (
           <div
             className="card w-[75%] sm:w-[45%] md:w-[30%] lg:w-[25%]   hover:shadow-xl p-4 transition"
@@ -48,14 +50,7 @@ function Product() {
                   Price:{item.price}$
                 </button>
               </p>
-              {/* <div className=" flex justify-between mx-10 my-5">
-                <button className="bg-blue-700 p-2 hover:bg-blue-500">
-                  Price:{item.price}$
-                </button>
-                <button className="bg-blue-700 p-3 hover:bg-blue-500">
-                  Rating:{item.rating.rate}
-                </button>
-              </div> */}
+
               <button
                 onClick={() => handlerAddtoCart(item)}
                 className="bg-red-700 p-3 w-full hover:bg-red-500 active:bg-red-950 active:text-white"
@@ -64,7 +59,8 @@ function Product() {
               </button>
             </div>
           </div>
-        ))}
+        ))
+      )}
       <ToastContainer stacked />
     </div>
   );

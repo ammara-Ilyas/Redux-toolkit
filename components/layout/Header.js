@@ -10,8 +10,8 @@ function Header() {
 
   return (
     <nav
-      className="border-4 flex justify-between px-16 py-3 duration-75 w-full
-     fixed top-0 z-40 bg-slate-50"
+      className="border-4 flex justify-between px-16 mb-28 py-3  w-full
+     sticky top-0 z-40 bg-slate-50"
     >
       <div className="col-span-2">
         <Link href="/product">
