@@ -2,12 +2,17 @@ import { toast } from "react-toastify";
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   items: [],
+  products: [],
 };
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    setProducts(state, action) {
+      state.products = action.payload;
+      // console.log("product", state.products);
+    },
     addToCart(state, action) {
       const item = action.payload;
       const existingItem = state.items.find((data) => {
@@ -63,6 +68,11 @@ const cartSlice = createSlice({
     },
   },
 });
-export const { addToCart, removefromCart, increCartItems, decreCartItems } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removefromCart,
+  increCartItems,
+  decreCartItems,
+  setProducts,
+} = cartSlice.actions;
 export default cartSlice.reducer;

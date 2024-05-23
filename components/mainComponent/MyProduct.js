@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { addToCart } from "@/redux/slice/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, setProducts } from "@/redux/slice/cartSlice";
 function Product() {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
+  const productList = useSelector((state) => state.cart.products);
+  console.log("pro", productList);
 
   useEffect(() => {
     try {
@@ -15,6 +17,7 @@ function Product() {
         const res = await fetch("https://fakestoreapi.com/products");
         const data = await res.json();
         setData(data);
+        dispatch(setProducts(data));
       };
       fetchData();
     } catch (error) {
@@ -26,39 +29,43 @@ function Product() {
   };
   return (
     <div className="flex flex-wrap items-center justify-center gap-4 w-[90%]	border-red-200  mt-28 mx-auto">
-      {!data ? (
+      {!productList ? (
         <div className="text-center text-2xl">Loading...</div>
       ) : (
-        data.map((item, i) => (
-          <div
-            className="card w-[75%] sm:w-[45%] md:w-[30%] lg:w-[25%]   hover:shadow-xl p-4 transition"
-            key={item.id}
-          >
-            <Link href={`/product/${item.id}`}>
-              {" "}
-              <img
-                src={item.image}
-                alt="pro"
-                className="w-3/4 mx-auto h-[250px]"
-              />
-            </Link>
-            <div className="card-body">
-              <h2 className="card-title  h-16 ">{item.title}</h2>
-              <p className="p-2 flex justify-between ">
-                <b>{item.category}</b>
-                <button className="bg-blue-700 p-2 hover:bg-blue-500">
-                  Price:{item.price}$
-                </button>
-              </p>
+        productList.map((item, i) => (
+          <>
+            {" "}
+            {/* <ProductCard item={item} /> */}
+            <div
+              className="card w-[75%] sm:w-[45%] md:w-[30%] lg:w-[25%]   hover:shadow-xl p-4 transition"
+              key={item.id}
+            >
+              <Link href={`/product/${item.id}`}>
+                {" "}
+                <img
+                  src={item.image}
+                  alt="pro"
+                  className="w-3/4 mx-auto h-[250px]"
+                />
+              </Link>
+              <div className="card-body">
+                <h2 className="card-title  h-16 ">{item.title}</h2>
+                <p className="p-2 flex justify-between ">
+                  <b>{item.category}</b>
+                  <button className="bg-blue-700 p-2 hover:bg-blue-500">
+                    Price:{item.price}$
+                  </button>
+                </p>
 
-              <button
-                onClick={() => handlerAddtoCart(item)}
-                className="bg-red-700 p-3 w-full hover:bg-red-500 active:bg-red-950 active:text-white"
-              >
-                Add to cart
-              </button>
+                <button
+                  onClick={() => handlerAddtoCart(item)}
+                  className="bg-red-700 p-3 w-full hover:bg-red-500 active:bg-red-950 active:text-white"
+                >
+                  Add to cart
+                </button>
+              </div>
             </div>
-          </div>
+          </>
         ))
       )}
       <ToastContainer stacked />
