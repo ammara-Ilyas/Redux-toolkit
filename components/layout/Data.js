@@ -72,6 +72,10 @@ export const footerLink = [
     name: "Privacy Policy",
     link: "/",
   },
+  {
+    name: "our setup",
+    link: "/",
+  },
 ];
 export const footerInfo = [
   {

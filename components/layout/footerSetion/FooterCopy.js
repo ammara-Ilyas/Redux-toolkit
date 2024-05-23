@@ -5,12 +5,12 @@ import Image from "next/image";
 import { FaHeart } from "react-icons/fa";
 
 const FooterCopyright = () => (
-  <div className="flex justify-between  items-center mx-5">
+  <div className="flex justify-between  items-center mx-10 py-1">
     <div className="">
-      <p className="flex items-center">
+      <p className="flex items-center gap-1 text-gray-600">
         Copyright &copy;
         {new Date().getFullYear()} All rights reserved | This template is made
-        with <FaHeart className="text-red-300 text-xl" />
+        with <FaHeart className="text-gray-700 text-xl" />
         by
         <Link
           href="https://colorlib.com"
@@ -22,7 +22,7 @@ const FooterCopyright = () => (
         </Link>
       </p>
     </div>
-    <div className="w-1/3  border-2">
+    <div className="w-1/3  ">
       <Image
         src={payment}
         alt="Payment Methods"

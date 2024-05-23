@@ -3,25 +3,29 @@ import { footerLink, footerInfo } from "../Data";
 
 import Link from "next/link";
 const FooterLinks = () => (
-  <div className="footer__widget flex  justify-between border-2">
-    <div>
-      {" "}
-      <h6 className="font-bold text-xl">Useful Links</h6>
-      <ul>
+  <div className=" flex flex-col  p-7 h-full gap-5">
+    {" "}
+    <h6 className="font-bold ">Useful Links</h6>
+    <div className="flex h-full justify-between text-sm">
+      <ul className="flex flex-col gap-4">
         {footerLink.map((item, i) => (
           <li key={i}>
-            <Link href={item.link}>{item.name}</Link>
+            <Link href={item.link} className="capitalize">
+              {item.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <ul className="flex flex-col gap-4 text-sm">
+        {footerInfo.map((item, i) => (
+          <li key={i}>
+            <Link href={item.link} className="capitalize">
+              {item.name}
+            </Link>
           </li>
         ))}
       </ul>
     </div>
-    <ul>
-      {footerInfo.map((item, i) => (
-        <li key={i}>
-          <Link href={item.link}>{item.name}</Link>
-        </li>
-      ))}
-    </ul>
   </div>
 );
 

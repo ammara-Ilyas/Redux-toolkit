@@ -1,21 +1,31 @@
 import React from "react";
 import { socialIcons } from "../Data";
 import Link from "next/link";
+////////////////
+import Button from "@/components/widgets/Button";
 const FooterNewsletter = () => (
-  <div className="footer__widget">
-    <h6>Join Our Newsletter Now</h6>
-    <p>Get E-mail updates about our latest shop and special offers.</p>
-    <form action="#">
-      <input type="text" placeholder="Enter your mail" />
-      <button type="submit" className="site-btn">
-        Subscribe
-      </button>
+  <div className="  h-full flex flex-col gap-5 w-full p-7">
+    <h6 className=" font-bold">Join Our Newsletter Now</h6>
+    <p className="text-sm text-gray-600">
+      Get E-mail updates about our latest shop and special offers.
+    </p>
+    <form action="#" className="   ">
+      <input
+        type="text"
+        placeholder="Enter your mail"
+        className=" p-3 border-none outline-none "
+      />
+
+      <Button text="Subscribe" />
     </form>
-    <ul className="flex items-center justify-center gap-2">
+    <ul className="flex items-center  gap-2 mt-5">
       {socialIcons.map((item, i) => (
-        <li key={i} className="border-none bg-red-500 p-2 rounded-full group ">
+        <li
+          key={i}
+          className="border-none bg-white p-3 rounded-full group hover:bg-green-500 duration-200"
+        >
           <Link href={item.link}>
-            <span className="group-hover:translate-x-2/3 group-hover:text-green-800">
+            <span className=" group-hover:rotate-180 group-hover:text-white duration-200">
               {item.icon}
             </span>
           </Link>
