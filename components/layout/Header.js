@@ -1,72 +1,20 @@
 "use client";
-import Image from "next/image";
-import logo from "../../image/logo.jpg";
-import Icon from "../../image/cart.jpg";
-import Link from "next/link";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-////////////import images
+import Image from "next/image";
+import { socialIcons } from "./Data";
+import { navlinks } from "./Data";
+import Link from "next/link";
+////////////import images/////////////////
 import shoplogo from "@/image/header/logo.webp";
 import usa from "@/image/header/usa.png";
-import React, { useState } from "react";
-import {
-  FaEnvelope,
-  FaFacebook,
-  FaTwitter,
-  FaLinkedin,
-  FaPinterestP,
-  FaUser,
-  FaHeart,
-  FaShoppingBag,
-} from "react-icons/fa";
+import { FaEnvelope, FaUser, FaHeart, FaShoppingBag } from "react-icons/fa";
 
 const Header = () => {
   const [language, setLanguage] = useState("English");
   const cartItems = useSelector((state) => state.cart.items);
   const langList = ["English", "Spanish", "Japanese", "Chinese", "Urdu"];
-  const socialIcons = [
-    {
-      icon: <FaFacebook />,
-      link: "https://www.facebook.com/",
-    },
-    {
-      icon: <FaTwitter />,
-      link: "https://www.facebook.com/",
-    },
-    {
-      icon: <FaLinkedin />,
-      link: "https://www.facebook.com/",
-    },
-    {
-      icon: <FaPinterestP />,
-      link: "https://www.facebook.com/",
-    },
-  ];
-  const navlinks = [
-    {
-      name: "Home",
-      link: "/",
-    },
-    {
-      name: "Product",
-      link: "/product",
-    },
-    {
-      name: "Blog",
-      link: "/blog",
-    },
-    {
-      name: "About",
-      link: "/about",
-    },
-    {
-      name: "shop",
-      link: "shop/",
-    },
-    {
-      name: "contact",
-      link: "/contact",
-    },
-  ];
+
   const cartIcons = [
     { icon: <FaHeart />, link: "/cart", num: cartItems.length },
     { icon: <FaShoppingBag />, link: "/shop", num: 0 },

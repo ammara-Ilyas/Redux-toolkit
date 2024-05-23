@@ -3,6 +3,7 @@ import "./globals.css";
 import ReduxProviders from "@/redux/ReduxProviders";
 import Header from "@/components/layout/Header";
 import Hero from "@/components/layout/Hero";
+import Footer from "@/components/layout/footerSetion/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
           <Header />
           <Hero />
           {children}
+          <Footer />
         </ReduxProviders>
       </body>
     </html>
