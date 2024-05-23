@@ -1,36 +1,168 @@
 "use client";
-import React from "react";
 import Image from "next/image";
 import logo from "../../image/logo.jpg";
 import Icon from "../../image/cart.jpg";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-function Header() {
-  const cartItems = useSelector((state) => state.cart.items);
+////////////import images
+import shoplogo from "@/image/header/logo.webp";
+import usa from "@/image/header/usa.png";
+import React, { useState } from "react";
+import {
+  FaEnvelope,
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+  FaPinterestP,
+  FaUser,
+  FaHeart,
+  FaShoppingBag,
+} from "react-icons/fa";
 
+const Header = () => {
+  const [language, setLanguage] = useState("English");
+  const cartItems = useSelector((state) => state.cart.items);
+  const langList = ["English", "Spanish", "Japanese", "Chinese", "Urdu"];
+  const socialIcons = [
+    {
+      icon: <FaFacebook />,
+      link: "https://www.facebook.com/",
+    },
+    {
+      icon: <FaTwitter />,
+      link: "https://www.facebook.com/",
+    },
+    {
+      icon: <FaLinkedin />,
+      link: "https://www.facebook.com/",
+    },
+    {
+      icon: <FaPinterestP />,
+      link: "https://www.facebook.com/",
+    },
+  ];
+  const navlinks = [
+    {
+      name: "Home",
+      link: "/",
+    },
+    {
+      name: "Product",
+      link: "/product",
+    },
+    {
+      name: "Blog",
+      link: "/blog",
+    },
+    {
+      name: "About",
+      link: "/about",
+    },
+    {
+      name: "shop",
+      link: "shop/",
+    },
+    {
+      name: "contact",
+      link: "/contact",
+    },
+  ];
+  const cartIcons = [
+    { icon: <FaHeart />, link: "/cart", num: cartItems.length },
+    { icon: <FaShoppingBag />, link: "/shop", num: 0 },
+  ];
   return (
-    <nav
-      className="border-4 flex justify-between px-16 mb-28 py-3  w-full
-     sticky top-0 z-40 bg-slate-50"
-    >
-      <div className="col-span-2">
-        <Link href="/product">
-          <Image src={logo} alt="logo" className="h-10 w-10" />
-        </Link>
+    <header className="border-2">
+      <div className=" bg-gray-200 py-2 border-2 border-red-400 px-20">
+        <div className="container mx-auto">
+          <div className="flex justify-between">
+            <div className="header__top__left flex space-x-4">
+              <div className=" ">
+                <FaEnvelope className="inline-block mr-2" /> hello@colorlib.com
+              </div>
+              <div className="border-[1px] border-r-black"></div>
+              <div>Free Shipping for all Order of $99</div>
+            </div>
+            <div className=" flex items-center space-x-7">
+              <div className=" flex items-center space-x-4 ml-3">
+                {socialIcons.map((item, i) => (
+                  <Link href={item.link} key={i}>
+                    {item.icon}
+                  </Link>
+                ))}
+              </div>
+              <div className="border-[1px] border-r-black h-full"></div>
+
+              <div className="relative">
+                <Image
+                  src={usa}
+                  alt="Language"
+                  className="inline-block mr-2 w-[30px] h-[20px] "
+                />
+                <select
+                  className="bg-transparent border-none outline-none"
+                  name=""
+                  id=""
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                >
+                  {langList.map((lang, i) => (
+                    <option value={lang} key={i}>
+                      {lang}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="border-[1px] border-r-black h-full"></div>
+
+              <div className="">
+                <Link href="#">
+                  <FaUser className="inline-block mr-2" /> Login
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div
-        className="col-span-5 text-end border-blue-950 border-2 px-3 relative flex justify-center"
-        // onClick={handlerCartPage}
-      >
-        <span className="bg-red-600 rounded-full absolute px-2 hover:bg-red-800 hover:text-white cursor-pointer">
-          {cartItems.length}
-        </span>
-        <Link href="/cart">
-          <Image src={Icon} alt="cart-icon" className="h-10 w-10" />
-        </Link>
+      <div className="container mx-auto py-4 border-2 px-20">
+        <div className="flex justify-between items-center border-2 border-orange-600">
+          <div className="">
+            <Link href="/">
+              <Image src={shoplogo} alt="Logo" className="w-[90px] h-[80px] " />
+            </Link>
+          </div>
+          <nav className="">
+            <ul className="flex items-center space-x-4">
+              {navlinks.map((item, i) => (
+                <li className="" key={i}>
+                  <Link
+                    href={item.link}
+                    className="text-black text-xl capitalize duration-200s active:text-rose-400 hover:text-red-400"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="flex space-x-4">
+            {cartIcons.map((item, i) => (
+              <Link href={item.link} key={i} className="relative p-2">
+                {item.icon}
+                <span className="absolute -top-1 right-0 text-xs bg-red-500 text-white rounded-full px-1">
+                  {item.num}
+                </span>
+              </Link>
+            ))}
+
+            <div className="text-sm">
+              item: <span className="font-bold">$150.00</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </nav>
+    </header>
   );
-}
+};
 
 export default Header;
