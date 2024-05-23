@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaAngleDown } from "react-icons/fa";
+
 const HeroCategories = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const CategoriesList = [
     {
       name: "Men's Clothing",
@@ -40,21 +43,32 @@ const HeroCategories = () => {
       link: "/",
     },
   ];
+  const handleOpenDepartment = () => {
+    setIsOpen((prevOpen) => !prevOpen);
+  };
   return (
-    <div className="">
-      <div className=" flex border-2 w-[60%] bg-rose-400 p-2 items-center">
+    <div className=" flex flex-col">
+      <div
+        className=" flex  w-[80%] bg-green-500 p-3 text-white items-center gap-4"
+        onClick={handleOpenDepartment}
+      >
         <div className="">
-          <FaBars />
+          <FaBars className="" />
         </div>{" "}
-        <span>All departments</span>
+        <span className="text-xl text-white">All departments</span>
+        <FaAngleDown className="" />
       </div>
-      <ul className="mt-2">
-        {CategoriesList.map((item, i) => (
-          <li key={i}>
-            <Link href={item.link}>{item.name}</Link>
-          </li>
-        ))}
-      </ul>
+      {isOpen ? (
+        <ul className="  flex flex-col gap-4 w-[80%] p-5 -mt-2">
+          {CategoriesList.map((item, i) => (
+            <li key={i}>
+              <Link href={item.link}>{item.name}</Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

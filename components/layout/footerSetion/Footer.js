@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="footer flex flex-col gap-3 bg-[#F3F6FA;]">
       <div className="  w-full S">
-        <div className="row flex justify-between mx-14  py-10 ">
+        <div className="row flex justify-between mx-14  py-7">
           <div className=" w-[30%]   ">
             <FooterLogo />
           </div>

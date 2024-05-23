@@ -20,8 +20,8 @@ const Header = () => {
     { icon: <FaShoppingBag />, link: "/shop", num: 0 },
   ];
   return (
-    <header className="border-2">
-      <div className=" bg-gray-200 py-2 border-2 border-red-400 px-20">
+    <header className="">
+      <div className=" bg-gray-200 py-2   px-20">
         <div className="container mx-auto">
           <div className="flex justify-between">
             <div className="header__top__left flex space-x-4">
@@ -72,8 +72,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto py-4 border-2 px-20">
-        <div className="flex justify-between items-center border-2 border-orange-600">
+      <div className="container mx-auto py-4  px-20">
+        <div className="flex justify-between items-center  border-orange-600">
           <div className="">
             <Link href="/">
               <Image src={shoplogo} alt="Logo" className="w-[90px] h-[80px] " />
