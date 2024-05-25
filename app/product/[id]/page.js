@@ -2,11 +2,12 @@
 import { addToCart } from "@/redux/slice/cartSlice";
 import { useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
+import Image from "next/image";
 import "react-toastify/dist/ReactToastify.css";
-export default async function Page({ params }) {
+export default function Page({ params }) {
   const dispatch = useDispatch();
-  const res = await fetch("https://fakestoreapi.com/products");
-  const data = await res.json();
+  const res = fetch("https://fakestoreapi.com/products");
+  const data = res.json();
   const product = data.find((item) => item.id === parseInt(params.id));
   const handlerAddtoCart = (proItem) => {
     console.log(proItem);
@@ -20,7 +21,11 @@ export default async function Page({ params }) {
         </div>
       ) : (
         <div className="card mx-auto  w-[90%] flex gap-5  justify-center  hover:shadow-xl p-4 ">
-          <img src={product.image} alt="pro" className="w-[35%] h-[450px]   " />
+          <Image
+            src={product.image}
+            alt="pro"
+            className="w-[35%] h-[450px]   "
+          />
           <div className="card-body w-[40%]  flex flex-col gap-5 p-5">
             <h2 className="card-title text-3xl font-bold">{product.title}</h2>
             <p className="p-2 flex text-2xl justify-between ">

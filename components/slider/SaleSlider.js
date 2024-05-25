@@ -31,7 +31,7 @@ const SaleSlider = () => {
         className="mySwiper"
       >
         {productList.map((item, i) => (
-          <SwiperSlide>
+          <SwiperSlide key={i}>
             <div
               className="card w-full border-2   hover:shadow-xl p-4 transition"
               key={item.id}

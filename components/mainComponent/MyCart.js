@@ -7,6 +7,7 @@ import {
   increCartItems,
   decreCartItems,
 } from "@/redux/slice/cartSlice";
+import Image from "next/image";
 function Cart() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
@@ -44,7 +45,7 @@ function Cart() {
                 className="flex items-center flex-col md:flex-row   justify-between border-b border-gray-300 py-4"
               >
                 <div className="flex items-center space-x-4">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.title}
                     className="h-28 w-28 md:h-16 md:w-16 object-cover rounded"

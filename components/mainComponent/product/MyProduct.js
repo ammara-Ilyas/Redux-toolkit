@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProductCard from "@/components/widgets/product/Card";
+import Image from "next/image";
 import Link from "next/link";
 /////////////import cart reducer//////
 import { useDispatch, useSelector } from "react-redux";
@@ -29,7 +30,7 @@ function Product() {
     } catch (error) {
       console.error(error);
     }
-  }, []);
+  }, [dispatch]);
   const handlerAddtoCart = (proItem) => {
     dispatch(addToCart(proItem));
   };
@@ -47,10 +48,12 @@ function Product() {
             >
               <Link href={`/product/${item.id}`}>
                 {" "}
-                <img
+                <Image
                   src={item.image}
                   alt="pro"
                   className="w-3/4 mx-auto h-[250px]"
+                  width={300}
+                  height={400}
                 />
               </Link>
               <div className="card-body">
