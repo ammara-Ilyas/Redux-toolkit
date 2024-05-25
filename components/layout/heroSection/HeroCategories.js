@@ -59,7 +59,7 @@ const HeroCategories = () => {
         <FaAngleDown className="" />
       </div>
       {isOpen ? (
-        <ul className="  flex flex-col gap-4 w-[80%] p-5 -mt-2">
+        <ul className="  flex flex-col gap-4 w-[80%] p-5 mt-0 bg-transparent bg-opacity-20 border-[1px]">
           {CategoriesList.map((item, i) => (
             <li key={i}>
               <Link href={item.link}>{item.name}</Link>

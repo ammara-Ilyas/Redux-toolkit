@@ -2,7 +2,6 @@ import React from "react";
 
 import HeroCategories from "./heroSection/HeroCategories";
 import HeroSearch from "./heroSection/HeroSearch";
-import HeroItem from "./heroSection/HeroItems";
 const Hero = () => {
   return (
     <section className="hero">
@@ -13,7 +12,6 @@ const Hero = () => {
           </div>
           <div className="col-lg-9 w-full lg:w-3/4">
             <HeroSearch />
-            <HeroItem backgroundImage="img/hero/banner.jpg" />
           </div>
         </div>
       </div>

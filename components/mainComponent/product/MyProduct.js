@@ -2,11 +2,17 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProductCard from "@/components/widgets/product/Card";
 import Link from "next/link";
+/////////////import cart reducer//////
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, setProducts } from "@/redux/slice/cartSlice";
+import {
+  addToCart,
+  setProducts,
+  setFilteredProducts,
+} from "@/redux/slice/cartSlice";
 function Product() {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.cart.products);
   console.log("pro", productList);
@@ -16,8 +22,8 @@ function Product() {
       const fetchData = async () => {
         const res = await fetch("https://fakestoreapi.com/products");
         const data = await res.json();
-        setData(data);
         dispatch(setProducts(data));
+        dispatch(setFilteredProducts(data));
       };
       fetchData();
     } catch (error) {
@@ -28,16 +34,15 @@ function Product() {
     dispatch(addToCart(proItem));
   };
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4 w-[90%]	border-red-200  mt-28 mx-auto">
+    <div className="flex flex-wrap items-center justify-center gap-4 w-full	border-red-200  mt-28 mx-auto">
       {!productList ? (
         <div className="text-center text-2xl">Loading...</div>
       ) : (
         productList.map((item, i) => (
           <>
             {" "}
-            {/* <ProductCard item={item} /> */}
             <div
-              className="card w-[75%] sm:w-[45%] md:w-[30%] lg:w-[25%]   hover:shadow-xl p-4 transition"
+              className="card w-[75%] sm:w-[45%] md:w-[30%] lg:w-[30%]   hover:shadow-xl p-4 transition"
               key={item.id}
             >
               <Link href={`/product/${item.id}`}>
@@ -51,7 +56,7 @@ function Product() {
               <div className="card-body">
                 <h2 className="card-title  h-16 ">{item.title}</h2>
                 <p className="p-2 flex justify-between ">
-                  <b>{item.category}</b>
+                  <b className="capitalize">{item.category}</b>
                   <button className="bg-blue-700 p-2 hover:bg-blue-500">
                     Price:{item.price}$
                   </button>
