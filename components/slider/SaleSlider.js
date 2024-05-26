@@ -1,17 +1,18 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React from "react";
 import ProductCard from "../widgets/product/Card";
+import SaleCardDetail from "../widgets/product/SaleCardDetail";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 //////////import reducer cart
 import { useSelector } from "react-redux";
-import Link from "next/link";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 const SaleSlider = () => {
-  const productList = useSelector((state) => state.cart.products);
+  const productList = useSelector((state) => state.cart.productList);
 
   return (
     <div className="border-2 w-full ml-auto">
@@ -33,10 +34,14 @@ const SaleSlider = () => {
         {productList.map((item, i) => (
           <SwiperSlide key={i}>
             <div
-              className="card w-full border-2   hover:shadow-xl p-4 transition"
+              className="relative card w-full border-2   hover:shadow-xl p-4 transition"
               key={item.id}
             >
+              <div className="absolute z-30 top-4 left-5 bg-red-500 text-white px-2 py-3 rounded-full text-sm ">
+                20%
+              </div>
               <ProductCard product={item} />
+              <SaleCardDetail product={item} />
             </div>{" "}
           </SwiperSlide>
         ))}

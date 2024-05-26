@@ -22,6 +22,7 @@ const cartSlice = createSlice({
       const existingItem = state.items.find((data) => {
         return data.id === item.id;
       });
+      // console.log("item", item);
       if (existingItem) {
         toast.error("Already exist in cart!", {
           theme: "dark",

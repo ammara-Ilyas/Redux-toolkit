@@ -48,6 +48,8 @@ function Cart() {
                   <Image
                     src={product.image}
                     alt={product.title}
+                    width={112}
+                    height={112}
                     className="h-28 w-28 md:h-16 md:w-16 object-cover rounded"
                   />
                   <div>

@@ -4,31 +4,45 @@ import { useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import Image from "next/image";
 import "react-toastify/dist/ReactToastify.css";
+import { useState, useEffect } from "react";
+
 export default function Page({ params }) {
   const dispatch = useDispatch();
-  const res = fetch("https://fakestoreapi.com/products");
-  const data = res.json();
-  const product = data.find((item) => item.id === parseInt(params.id));
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("https://fakestoreapi.com/products");
+        const data = await res.json();
+        const product = data.find((item) => item.id === parseInt(params.id));
+        setProduct(product);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [params.id]);
+
   const handlerAddtoCart = (proItem) => {
-    console.log(proItem);
     dispatch(addToCart(proItem));
   };
+
   return (
     <div>
-      {!product ? (
-        <div className="card w-[90%] flex items-center justify-center p-10 hover:shadow-xl">
-          Loading...
-        </div>
-      ) : (
+      {product && (
         <div className="card mx-auto  w-[90%] flex gap-5  justify-center  hover:shadow-xl p-4 ">
           <Image
             src={product.image}
             alt="pro"
-            className="w-[35%] h-[450px]   "
+            width={350}
+            height={500}
+            className="w-[55%]  h-[450px]   "
           />
           <div className="card-body w-[40%]  flex flex-col gap-5 p-5">
             <h2 className="card-title text-3xl font-bold">{product.title}</h2>
-            <p className="p-2 flex text-2xl justify-between ">
+            <p className="p-2 flex text-2xl justify-between capitalize">
               {product.category}
             </p>
             <p className=" flex justify-between font-normal ">
