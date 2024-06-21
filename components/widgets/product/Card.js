@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { FaHeart, FaRetweet, FaShoppingCart } from "react-icons/fa";
-import IconLinks from "./Icon";
+import IconLinks from "./widgets/Icon";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slice/cartSlice";
 const ProductCard = ({ product }) => {

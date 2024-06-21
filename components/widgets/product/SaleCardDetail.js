@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Star from "./Star";
 const SaleCardDetail = ({ product }) => {
-  console.log("product", product);
+  // console.log("product", product);
   return (
     <div className="py-5">
       <h5 className="text-lg font-bold text-gray-900 mt-1">

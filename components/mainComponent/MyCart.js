@@ -11,13 +11,13 @@ import Image from "next/image";
 function Cart() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
-  console.log("cart", cartItems);
+  // console.log("cart", cartItems);
 
   const totalPriceAllProducts = cartItems.reduce((acc, priceItem) => {
-    console.log("acc", acc, "price", priceItem);
+    // console.log("acc", acc, "price", priceItem);
     return acc + priceItem.quantity * priceItem.price;
   }, 0);
-  console.log("item", totalPriceAllProducts);
+  // console.log("item", totalPriceAllProducts);
   const deleteItem = (index) => {
     dispatch(removefromCart(index));
   };

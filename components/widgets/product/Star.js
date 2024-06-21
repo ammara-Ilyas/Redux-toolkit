@@ -3,7 +3,7 @@ import { FaStar, FaRegStarHalfStroke } from "react-icons/fa6";
 import { CiStar } from "react-icons/ci";
 
 const Star = ({ rating }) => {
-  console.log("rate", rating);
+  // console.log("rate", rating);
   const startRating = Array.from({ length: 5 }, (_, index) => {
     let number = index + 0.5;
     return (

@@ -1,5 +1,5 @@
 import React from "react";
-
+import Checkbox from "./widgets/Checkbox";
 const Color = () => {
   const color = ["white", "blue", "red", "green", "yellow", "purple"];
   return (
@@ -9,6 +9,7 @@ const Color = () => {
           <div
             className={`h-4 w-4 rounded-full bg-${item}-500 border-[1px]`}
           ></div>
+          <Checkbox bgcolor={item} />
           <p className="capitalize">{item}</p>
         </div>
       ))}
