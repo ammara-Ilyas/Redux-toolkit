@@ -27,9 +27,9 @@ const PriceFilter = () => {
     dispatch(setProducts(filteredProducts));
   };
   return (
-    <div className=" flex justify-between items-center w-[90%] mx-auto ">
+    <div className=" flex justify-between items-center w-[95%] mx-auto ">
       <p className="text-2xl font-semibold">Price</p>
-      <div className="flex justify-between  w-[75%] items-center">
+      <div className="flex justify-between  w-[80%] items-center">
         <div className="flex flex-col">
           Min{" "}
           <input
