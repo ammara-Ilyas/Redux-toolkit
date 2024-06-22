@@ -5,7 +5,6 @@ import IconLinks from "./widgets/Icon";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slice/cartSlice";
 const ProductCard = ({ product }) => {
-  // console.log("id", product.id);
   const dispatch = useDispatch();
   const handleCartAddItem = (product) => {
     dispatch(addToCart(product));

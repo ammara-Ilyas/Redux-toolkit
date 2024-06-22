@@ -45,7 +45,7 @@ function Product() {
         productList.map((item) => (
           <div
             key={item.id}
-            className="w-[30%]"
+            className="w-[30%] hover:shadow-lg p-4 rounded-md"
             onClick={() => handleProduct(item)}
           >
             <ProductCard product={item} />

@@ -15,7 +15,7 @@ const SaleSlider = () => {
   const productList = useSelector((state) => state.cart.productList);
 
   return (
-    <div className="border-2 w-full ml-auto">
+    <div className="border-2 w-[80%] ml-auto">
       <Swiper
         spaceBetween={30}
         slidesPerView={3}

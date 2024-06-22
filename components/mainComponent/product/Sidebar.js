@@ -2,6 +2,7 @@ import React from "react";
 import Color from "@/components/widgets/product/Color";
 import PriceFilter from "@/components/widgets/product/PriceFilter";
 import CategoryButton from "@/components/widgets/product/CategoryButton";
+import SidebarSlider from "@/components/slider/SidebarSlider";
 
 function Sidebar() {
   return (
@@ -9,6 +10,7 @@ function Sidebar() {
       <PriceFilter />
       <Color />
       <CategoryButton />
+      <SidebarSlider />
     </div>
   );
 }

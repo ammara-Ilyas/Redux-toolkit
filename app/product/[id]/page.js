@@ -5,7 +5,8 @@ import { ToastContainer } from "react-toastify";
 import Image from "next/image";
 import "react-toastify/dist/ReactToastify.css";
 import { useState, useEffect } from "react";
-
+////////////
+import singleProductSlider from "@/components/slider/singleProductSlider";
 export default function Page({ params }) {
   const dispatch = useDispatch();
   const [product, setProduct] = useState(null);
@@ -40,6 +41,7 @@ export default function Page({ params }) {
             height={500}
             className="w-[55%]  h-[450px]   "
           />
+          <singleProductSlider />
           <div className="card-body w-[40%]  flex flex-col gap-5 p-5">
             <h2 className="card-title text-3xl font-bold">{product.title}</h2>
             <p className="p-2 flex text-2xl justify-between capitalize">
