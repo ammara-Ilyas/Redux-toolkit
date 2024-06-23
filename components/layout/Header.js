@@ -64,7 +64,7 @@ const Header = () => {
               <div className="border-[1px] border-r-black h-full"></div>
 
               <div className="">
-                <Link href="#">
+                <Link href="/contact/login">
                   <FaUser className="inline-block mr-2" /> Login
                 </Link>
               </div>
