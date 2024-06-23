@@ -1,7 +1,5 @@
 import React from "react";
-import { socialIcons } from "../Data";
-import Link from "next/link";
-////////////////
+import Icon from "@/components/widgets/layout/Icon";
 import Button from "@/components/widgets/Button";
 const FooterNewsletter = () => (
   <div className="  h-full flex flex-col gap-5 w-full p-7">
@@ -18,20 +16,7 @@ const FooterNewsletter = () => (
 
       <Button text="Subscribe" />
     </form>
-    <ul className="flex items-center  gap-2 mt-5">
-      {socialIcons.map((item, i) => (
-        <li
-          key={i}
-          className="border-none bg-white p-3 rounded-full group hover:bg-green-500 duration-200"
-        >
-          <Link href={item.link}>
-            <span className=" group-hover:rotate-180 group-hover:text-white duration-200">
-              {item.icon}
-            </span>
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <Icon />
   </div>
 );
 

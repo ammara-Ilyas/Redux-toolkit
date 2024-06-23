@@ -1,10 +1,14 @@
 import React from "react";
-import RegistrationForm from "@/components/mainComponent/contactComponents/RegistrationForm";
+import Addres from "@/components/mainComponent/contactComponents/Addres";
+import Map from "@/components/mainComponent/contactComponents/Map";
+import NewsLatter from "@/components/mainComponent/contactComponents/NewsLatter";
 const page = () => {
   return (
-    <div>
-      <RegistrationForm />
-    </div>
+    <>
+      <Addres />
+      <Map />
+      <NewsLatter />
+    </>
   );
 };
 
