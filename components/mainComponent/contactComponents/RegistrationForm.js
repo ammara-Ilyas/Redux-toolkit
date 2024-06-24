@@ -5,11 +5,13 @@ import { contactInfoSchema } from "./contactWidget/SachemaYup";
 import { useFormik } from "formik";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
-
+/////////////redux
+import { useDispatch } from "react-redux";
+import { addToRgisteredList } from "@/redux/slice/contactSlice";
 const RegistrationForm = () => {
-  const [contactList, setContactList] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const dispatch = useDispatch();
 
   const contactInitialData = {
     name: "",
@@ -24,9 +26,8 @@ const RegistrationForm = () => {
     validationSchema: contactInfoSchema,
     onSubmit: (values) => {
       console.log("Form submitted:", values);
-      const contactsData = [...contactList, values];
-      setContactList(contactsData);
-      console.log("contactList", contactList);
+
+      dispatch(addToRgisteredList(values));
       formik.resetForm();
     },
   });

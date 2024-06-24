@@ -1,6 +1,36 @@
+"use client";
 import React from "react";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 const LoginForm = () => {
+  const registeredList = useSelector((state) => state.contact.registeredList);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // Check if email exists in registeredList
+    const user = registeredList.find((user) => user.email === email);
+
+    if (!user) {
+      setError("Email not found. Please register first.");
+      return;
+    }
+
+    // Check if password matches
+    if (user.password !== password) {
+      setError("Incorrect password. Please try again.");
+      return;
+    }
+
+    // Login successful logic (e.g., redirect to dashboard)
+    console.log("Login successful!");
+    // Redirect logic or state update after successful login
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
